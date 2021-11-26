@@ -1,4 +1,4 @@
-
+package utilities;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,14 +11,29 @@ import com.dictionary.DictionaryService;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import org.junit.runner.RunWith;
+import tests.DictionaryTester;
+
 public class ReusableMethods {
     public Dictionary dictionary;
     public DictionaryService dictService;
     List<String> dictionaryList;
 
 
-    public String testWord = "work";
+    public String testWord = ConfigReader.getProperty("test_word");
 
+
+    public static Object[][] testData() {
+        return new Object[][]{
+                {ConfigReader.getProperty("testWord1")},
+                {ConfigReader.getProperty("testWord2")},
+                {ConfigReader.getProperty("testWord3")},
+                {ConfigReader.getProperty("testWord4")},
+                {ConfigReader.getProperty("testWord5")}
+        };
+    }
 
     /**
      * Create String list based on the Dictionary file (EnglishWords in this case) to mock the dictionary service

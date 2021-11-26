@@ -57,7 +57,8 @@ public class Dictionary {
                 }
             }
             if (nonMatch) {
-                matches.add(word);
+                if(!matches.contains(word))
+                    matches.add(word);
             }
         }
         System.out.println(matches);

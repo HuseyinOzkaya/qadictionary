@@ -1,6 +1,9 @@
+package tests;
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import utilities.ReusableMethods;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -9,8 +12,7 @@ public class TestRunner {
 
         // Print failed tests
         for (Failure failure : result.getFailures()) {
-            System.out.println(failure.toString());
-            System.err.println(reusableMethods.testWord + " is not English word");
+           System.err.println(result.getFailures());
         }
 
         // Print success tests

@@ -22,7 +22,7 @@ ReusableMethods reusableMethods = new ReusableMethods();
 
     @Before
     public void setUp() {
-        reusableMethods.setUp();
+        reusableMethods.preLoading();
     }
 
 

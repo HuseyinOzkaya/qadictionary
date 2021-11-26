@@ -1,5 +1,4 @@
 package utilities;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -10,10 +9,6 @@ import com.dictionary.Dictionary;
 import com.dictionary.DictionaryService;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
-import com.tngtech.java.junit.dataprovider.DataProvider;
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import org.junit.runner.RunWith;
 import tests.DictionaryTester;
 
 public class ReusableMethods {
@@ -22,9 +17,11 @@ public class ReusableMethods {
     List<String> dictionaryList;
 
 
-    public String testWord = ConfigReader.getProperty("test_word");
+    //testing single word. It is called from config.properties
+    public String testWord = ConfigReader.getProperty("singleTestWord");
 
 
+    //for testing multiple words. They are called from config.properties
     public static Object[][] testData() {
         return new Object[][]{
                 {ConfigReader.getProperty("testWord1")},
@@ -61,7 +58,7 @@ public class ReusableMethods {
     }
 
 
-    public void setUp() {
+    public void preLoading() {
         dictionary = new Dictionary();
         dictService = mock(DictionaryService.class);
         dictionary.setDictionaryService(dictService);
@@ -78,10 +75,13 @@ public class ReusableMethods {
     public boolean isThisEnglish(String word) {
         for (String w : dictionaryList) {
             if (w.equals(word.toLowerCase())) {
-                System.out.println(word + " is a valid english word");
+                System.out.println(word + " is a valid English word");
                 return true;
             }
         }
+
+        //print if the word is not English
+        System.err.println(word + " is not a valid English word");
         return false;
     }
 }

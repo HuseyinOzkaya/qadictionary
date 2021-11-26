@@ -3,7 +3,6 @@ package tests;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import tests.DictionaryTester;
 import utilities.ReusableMethods;
 
 public class TestRunner {
@@ -14,9 +13,6 @@ public class TestRunner {
         // Print failed tests
         for (Failure failure : result.getFailures()) {
            System.err.println(result.getFailures());
-            System.err.println("not english word");
-            //System.err.println(failure.toString());
-
         }
 
         // Print success tests
